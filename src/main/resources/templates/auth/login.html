@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Авторизация</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+</head>
+<body>
+
+<div class="areaLogin">
+  <div class="login">
+    <h1>Авторизация</h1>
+    <form name="f" method="post" action="/process_login">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <div th:if="${param.error}" style="color: red; font-size: 14px; margin-bottom: 10px">неверный логин или пароль</div>
+      <label for="username">Введите никнейм: </label>
+      <input type="text" name="username" id="username"/>
+      <br/>
+      <label for="password">Введите пароль: </label>
+      <input type="password" name="password" id="password"/>
+      <br/>
+      <input class="knopka" type="submit" value="Войти"/>
+    </form>
+    <p>У вас еще нет аккаунта? <a th:href="@{/auth/registration}">Зарегистрируйтесь</a></p>
+    <p class="drop"><a class="otherA" th:href="@{/hello}">Вернуться на главную страницу</a></p>
+  </div>
+</div>
+
+</body>
+</html>

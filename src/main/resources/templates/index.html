@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Milksha</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a th:href="@{/hello}">
+                <img src="images/logo.png">
+            </a>
+        </div>
+        <div class="menu">
+            <a th:href="@{/hello}">Главная</a>
+            <a th:href="@{/menu}">Меню</a>
+            <a th:href="@{/aboutUs}">О нас</a>
+        </div>
+        <div class="log" th:if="${person == null}">
+            <a th:href="@{/auth/login}">Вход</a>
+            <a th:href="@{/auth/registration}">Регистрация</a>
+        </div>
+        <div class="log" th:if="${person != null}">
+            <a href="#" th:text="${person.getUsername()}"></a>
+            <a href="#">
+                <img src="images/basket.png">
+            </a>
+        </div>
+    </header>
+
+    <div class="preview">
+        <img src="images/preview.jpeg">
+    </div>
+    <div class="info">
+        <div class="text">
+            <p><span>Bubble tea</span> - распространенный напиток уже не только на территории Китая и Тайваня,
+                но и во всем мире.</p><br/><br/>
+            <p><span>Milksha bubble tea</span> - это уникальный вкуснейший напиток, приготовленный на основе чая,
+                разных вкусов и цветов с добавлением разнообразных топпингов.</p><br/><br/>
+            <p><span>Главная миссия</span> - донести до своих гостей самые яркие вкусы Bubble Tea, бережно сохранив
+                традиции и тонкости оригинальной рецептуры.</p><br/><br/>
+        </div>
+    </div>
+
+  <!--<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout"/>
+  </form>-->
+</body>
+</html>
