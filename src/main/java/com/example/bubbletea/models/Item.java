@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Item")
 @Getter
@@ -22,9 +24,11 @@ public class Item {
     @Column(name = "name")
     private String name;
 
-    @NotEmpty(message = "price must not be empty")
     @Column(name = "price")
     private int price;
+
+    @OneToMany(mappedBy = "item")
+    private List<BasketItem> basketItems;
 
     public Item() {
     }

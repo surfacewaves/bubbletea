@@ -23,8 +23,8 @@
             <a th:href="@{/auth/registration}">Регистрация</a>
         </div>
         <div class="log" th:if="${person != null}">
-            <a href="#" th:text="${person.getUsername()}"></a>
-            <a href="#">
+            <a th:href="@{/profile}" th:text="${person.getUsername()}"></a>
+            <a th:href="@{/basket}">
                 <img src="images/basket.png">
             </a>
         </div>

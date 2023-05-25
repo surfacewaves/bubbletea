@@ -1,0 +1,74 @@
+.basket {
+    width: 100%;
+    height: auto;
+    padding-top: 150px;
+    color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title h1 {
+    margin-bottom: 50px;
+}
+
+.container {
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #111;
+}
+
+.item_image,
+.name,
+.math,
+.sum {
+    width: 200px;
+}
+
+.item_image img {
+    width: 150px;
+}
+
+.name {
+    text-align: center;
+}
+
+.total_price {
+    padding-top: 50px;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.total_price a {
+    text-decoration: none;
+    color: #111111;
+}
+
+.btn {
+    padding-right: 50px;
+}
+
+.btn input {
+    width: 30px;
+}

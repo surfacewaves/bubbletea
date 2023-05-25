@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказ</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/order.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a th:href="@{/hello}">
+      <img src="images/logo.png">
+    </a>
+  </div>
+  <div class="menu">
+    <a th:href="@{/hello}">Главная</a>
+    <a th:href="@{/menu}">Меню</a>
+    <a th:href="@{/aboutUs}">О нас</a>
+  </div>
+  <div class="log">
+    <a th:href="@{/profile}" th:text="${person.getUsername()}"></a>
+    <a th:href="@{/basket}">
+      <img src="images/basket.png">
+    </a>
+  </div>
+</header>
+
+<div class="order">
+  <div th:text="'Заказ №' + ${basket.getId()}"></div>
+  <div th:text="'Сумма заказа: ' + ${basket.getTotal_price()}"></div>
+  <div>Состав:</div>
+  <div th:each="item : ${items}">
+    <div th:text="${item.getItem().getName()} + ' в количестве ' + ${item.getQuantity()}"></div>
+  </div>
+</div>
+
+</body>
+</html>

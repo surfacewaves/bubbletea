@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a th:href="@{/hello}">
+        <img src="images/logo.png">
+      </a>
+    </div>
+    <div class="menu">
+      <a th:href="@{/hello}">Главная</a>
+      <a th:href="@{/menu}">Меню</a>
+      <a th:href="@{/aboutUs}">О нас</a>
+    </div>
+    <div class="log">
+      <a th:href="@{/profile}" th:text="${person.getUsername()}"></a>
+      <a th:href="@{/basket}">
+        <img src="images/basket.png">
+      </a>
+    </div>
+  </header>
+
+  <div class="person_info">
+    <div th:text="'Ваш ник: ' + ${person.getUsername()} "></div>
+    <div th:text="'Ваше имя: ' + ${person.getLast_name() + ' ' + person.getFirst_name()}"></div>
+    <div th:text="'Ваш адрес: ' + ${person.getAddress()}"></div>
+    <div>Чтобы ознакомиться с историей заказов, <a th:href="@{/profile/history}"> нажмите тут</a>.</div>
+  </div>
+
+</body>
+</html>

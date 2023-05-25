@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Milksha - Menu</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css">
+</head>
+<body>
+
+  <!--<div th:each="item : ${items}">
+      <p th:text="${item.getName()}"></p>
+      <img th:src="@{/images/products/product{id}.jpg(id=${item.getId()})}">
+  </div>-->
+  <header>
+      <div class="logo">
+          <a th:href="@{/hello}">
+              <img src="images/logo.png">
+          </a>
+      </div>
+      <div class="menu">
+          <a th:href="@{/hello}">Главная</a>
+          <a th:href="@{/menu}">Меню</a>
+          <a th:href="@{/aboutUs}">О нас</a>
+      </div>
+      <div class="log" th:if="${person == null}">
+          <a th:href="@{/auth/login}">Вход</a>
+          <a th:href="@{/auth/registration}">Регистрация</a>
+      </div>
+      <div class="log" th:if="${person != null}">
+          <a th:href="@{/profile}" th:text="${person.getUsername()}"></a>
+          <a th:href="@{/basket}">
+              <img src="images/basket.png">
+          </a>
+      </div>
+  </header>
+
+  <div class="cards">
+      <div class="card" th:each="item : ${items}">
+          <div class="card__top">
+              <div href="#" class="card__image">
+                  <img th:src="@{/images/products/product{id}.jpg(id=${item.getId()})}"/>
+              </div>
+          </div>
+          <div class="card__bottom">
+              <p class="card__title" th:text="${item.getName()}"></p>
+              <div class="card__prices">
+                  <p class="card__price card__price--common" th:text="${item.getPrice()}"></p>
+              </div>
+              <form class="card__add" th:method="POST" th:action="@{/basket/add/{id}(id=${item.getId()})}">
+                  <input type="submit" value="В корзину"/>
+              </form>
+          </div>
+      </div>
+  </div>
+
+</body>
+</html>

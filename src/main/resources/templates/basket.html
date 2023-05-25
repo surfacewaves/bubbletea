@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Корзина</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/base.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/basket.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a th:href="@{/hello}">
+      <img src="images/logo.png">
+    </a>
+  </div>
+  <div class="menu">
+    <a th:href="@{/hello}">Главная</a>
+    <a th:href="@{/menu}">Меню</a>
+    <a th:href="@{/aboutUs}">О нас</a>
+  </div>
+  <div class="log">
+    <a th:href="@{/profile}" th:text="${person.getUsername()}"></a>
+    <a th:href="@{/basket}">
+      <img src="images/basket.png">
+    </a>
+  </div>
+</header>
+
+<div class="basket">
+  <div class="errorEmptyBasket" th:if="${basket == null}">
+    <h1>Корзина пустая</h1>
+    <h2>Вы можете добавить товары на странице <a th:href="@{/menu}">меню</a></h2>
+  </div>
+  <div class="title" th:if="${basket != null}">
+    <h1>Корзина</h1>
+    <div class="container">
+      <div class="item" th:each="basketItem : ${basket.getBasketItems()}">
+        <div class="item_image"><img th:src="@{/images/products/product{id}.jpg(id=${basketItem.getItem().getId()})}"/></div>
+        <div class="name" th:text="${basketItem.getItem().getName()}"></div>
+        <div class="math" th:text="${basketItem.getQuantity()} + ' x ' + ${basketItem.getItem().getPrice()}"></div>
+        <div class="sum" th:text="${basketItem.getQuantity() * basketItem.getItem().getPrice()}"></div>
+        <div class="btn">
+          <form th:method="POST" th:action="@{/basket/remove1/{id}(id=${basketItem.getId()})}">
+            <input type="submit" value="-"/>
+          </form>
+        </div>
+        <div class="btn">
+          <form th:method="POST" th:action="@{/basket/add1/{id}(id=${basketItem.getId()})}">
+            <input type="submit" value="+"/>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="total_price">
+      <div>Итого: </div>
+      <div th:text="${basket.getTotal_price()}"></div>
+    </div>
+
+    <div class="makeComplete">
+      <form th:method="POST" th:action="@{/basket/makeOrder/{id}(id=${basket.getId()})}">
+        <input type="submit" value="Оформить"/>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
